@@ -90,6 +90,22 @@ plugins = PluginManager()
 # -------------------------------------------------------------------------
 # create all tables needed by auth if not custom tables
 # -------------------------------------------------------------------------
+## additonal fields
+db.define_table('setor',
+                Field('set_setor'),
+                Field('set_area'))
+
+db.define_table('funcao',
+                Field('fun_nome', type='string', unique = True),
+                Field('fun_descricao', type='text'))
+
+auth.settings.extra_fields['auth_user']= [
+    Field('Supervisor'),
+    Field('RE', type='integer'),
+    Field('Funcao', type='reference funcao', requires = IS_IN_DB(db, 'funcao.fun_nome')),
+    Field('Celular', type='integer'),
+]
+
 auth.define_tables(username=False, signature=False)
 
 # -------------------------------------------------------------------------
@@ -130,3 +146,4 @@ auth.settings.reset_password_requires_verification = True
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
+
