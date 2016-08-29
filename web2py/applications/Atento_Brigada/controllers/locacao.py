@@ -1,2 +1,4 @@
 def alocar():
-    return dict()
+    query= db(db.planta).select().first()
+    plantaurl = URL('cadastros', 'download', args=query.image)
+    return dict(plantaurl=plantaurl)

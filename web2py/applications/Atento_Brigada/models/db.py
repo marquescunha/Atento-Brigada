@@ -95,6 +95,10 @@ db.define_table('setor',
                 Field('set_setor'),
                 Field('set_area'))
 
+db.define_table('planta',
+                Field('plan_nome'),
+                Field('image', 'upload', default='path/'))
+
 db.define_table('funcao',
                 Field('fun_nome', type='string', unique = True),
                 Field('fun_descricao', type='text'))

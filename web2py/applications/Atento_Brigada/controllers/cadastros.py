@@ -10,3 +10,14 @@ def funcao():
 
     response.title = 'Função'
     return dict(form=form)
+
+def planta():
+    db.planta.id.readable = False
+    form = SQLFORM.grid(db.planta, csv=False, create=False, deletable=False, searchable=False)
+
+    response.title = 'planta'
+    response.subtitle = 'Planta'
+    return dict(form=form)
+
+def download():
+    return response.download(request,db)

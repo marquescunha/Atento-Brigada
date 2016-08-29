@@ -53,8 +53,13 @@ def _():
             (T('Setor'), False, URL('cadastros', 'setor')),
             (T('Função'), False, URL('cadastros', 'funcao'))
         ]),
+
         (T('Locação'), False, '#', [
             (T('Alocar'), False, URL('locacao', 'alocar'))
+        ]),
+
+        (T('Planta'), False, '#', [
+            (T('Planta'), False, URL('cadastros', 'planta'))
         ])
     ]
 
