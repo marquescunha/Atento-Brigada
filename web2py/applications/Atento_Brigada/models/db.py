@@ -93,7 +93,11 @@ plugins = PluginManager()
 ## additonal fields
 db.define_table('setor',
                 Field('set_setor'),
-                Field('set_area'))
+                Field('set_area'),
+                Field('set_x'),
+                Field('set_y'),
+                Field('set_width'),
+                Field('set_height'))
 
 db.define_table('planta',
                 Field('plan_nome'),

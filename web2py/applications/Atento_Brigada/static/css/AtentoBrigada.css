@@ -1,8 +1,16 @@
 img#imagemplanta{
-    width: 1200px;
-    height: 700px;
+    width: 1000px;
+    height: 500px;
+
 }
 
 .background_brigada{
     background: url(../images/brigadistas.png) no-repeat center center;
+}
+
+
+div.alocar_principal{
+    display: inline-block;
+    margin-left: 200px;
+    margin-right: auto;
 }

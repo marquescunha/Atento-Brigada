@@ -375,3 +375,67 @@ success!
 success!
 success!
 success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2016-08-31T19:43:28.937000
+ALTER TABLE setor ADD set_x CHAR(512);
+timestamp: 2016-08-31T19:43:29.043000
+ALTER TABLE setor ADD set_y CHAR(512);
+timestamp: 2016-08-31T19:43:29.156000
+ALTER TABLE setor ADD set_height CHAR(512);
+timestamp: 2016-08-31T19:43:29.282000
+ALTER TABLE setor ADD set_width CHAR(512);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
