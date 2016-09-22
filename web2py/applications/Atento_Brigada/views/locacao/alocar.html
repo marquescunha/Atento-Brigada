@@ -5,8 +5,42 @@
 <script src="{{=URL('static','js/interact.js')}}"></script>
 
 <script>
+    function salvarCaixa() {
+        listaCaixa = []
+        jQuery('div.caixa').each(function (index, value) {
+            caixaInfo = {}
+            caixaInfo.altura = value.offsetHeight
+            caixaInfo.largura = value.offsetWidth
+            caixaInfo.y = value.getBoundingClientRect().top
+            caixaInfo.x = value.getBoundingClientRect().left
+            caixaInfo.area = value.getAttribute('area')
+            caixaInfo.setor = value.getAttribute('setor')
+
+            listaCaixa.push(caixaInfo)
+        })
+
+        $.ajax({
+            url: '{{=URL('locacao','salvar_caixa')}}',
+            data: {listaCaixa: JSON.stringify(listaCaixa)},
+            success: function(result){
+
+            }
+        });
+    }
+
+    function destroiCaixa(input) {
+        var pai = input.parentNode
+        var avo = input.parentNode.parentNode
+        avo.removeChild(pai)
+
+    }
+
     function adicionarCaixa() {
-        jQuery('div.fundo').append('<div class="drag-and-resize"></div>')
+        var area = jQuery('input#area').val()
+        var setor = jQuery('input#setor').val()
+        var area_setor = 'Area:'+area +' Setor:'+setor
+        var botao_fechar = '<input type="button" value="x" onClick ="destroiCaixa(this)">'
+        jQuery('div.fundo').append('<div area='+ area +' setor=' + setor + ' class="caixa drag-and-resize"> '+ area_setor + botao_fechar + '</div>')
         adicinoarInteract('div.drag-and-resize')
     }
 
@@ -58,7 +92,7 @@
 
                     target.setAttribute('data-x', x);
                     target.setAttribute('data-y', y);
-                    target.textContent = Math.round(event.rect.width) + '×' + Math.round(event.rect.height);
+                    //target.textContent = Math.round(event.rect.width) + '×' + Math.round(event.rect.height);
                 });
 
     }
@@ -70,9 +104,9 @@
 <div class="alocar_principal">
     <div>
         <input onclick="adicionarCaixa()" type="button" value="Adicionar">
-        <input type="button" value="Salvar">
-        <input type="text" value="Area">
-        <input type="text" value="Setor">
+        <input type="button" value="Salvar" onclick="salvarCaixa()">
+        <input type="text" value="Area" id="area">
+        <input type="text" value="Setor" id ="setor">
     </div>
     <div class="fundo">
         <img id="imagemplanta" src="{{=plantaurl}}" />
