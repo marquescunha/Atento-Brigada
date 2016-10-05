@@ -5,16 +5,26 @@
 <script src="{{=URL('static','js/interact.js')}}"></script>
 
 <script>
+    $(document).ready(function() {
+        {{for caixa in todas_caixas:}}
+            var area = "{{=caixa.set_area}}"
+            var setor = "{{=caixa.set_setor}}"
+            adicionarCaixaAuxiliar(area,setor)
+        {{pass}}
+    })
+
+
+
     function salvarCaixa() {
         listaCaixa = []
         jQuery('div.caixa').each(function (index, value) {
             caixaInfo = {}
-            caixaInfo.altura = value.offsetHeight
-            caixaInfo.largura = value.offsetWidth
-            caixaInfo.y = value.getBoundingClientRect().top
-            caixaInfo.x = value.getBoundingClientRect().left
-            caixaInfo.area = value.getAttribute('area')
-            caixaInfo.setor = value.getAttribute('setor')
+            caixaInfo.set_altura = value.offsetHeight
+            caixaInfo.set_largura = value.offsetWidth
+            caixaInfo.set_y = value.getBoundingClientRect().top
+            caixaInfo.set_x = value.getBoundingClientRect().left
+            caixaInfo.set_area = value.getAttribute('area')
+            caixaInfo.set_setor = value.getAttribute('setor')
 
             listaCaixa.push(caixaInfo)
         })
@@ -38,10 +48,15 @@
     function adicionarCaixa() {
         var area = jQuery('input#area').val()
         var setor = jQuery('input#setor').val()
+        adicionarCaixaAuxiliar(area,setor)
+    }
+
+    function adicionarCaixaAuxiliar(area,setor) {
         var area_setor = 'Area:'+area +' Setor:'+setor
         var botao_fechar = '<input type="button" value="x" onClick ="destroiCaixa(this)">'
         jQuery('div.fundo').append('<div area='+ area +' setor=' + setor + ' class="caixa drag-and-resize"> '+ area_setor + botao_fechar + '</div>')
         adicinoarInteract('div.drag-and-resize')
+
     }
 
     function dragMoveListener (event) {
